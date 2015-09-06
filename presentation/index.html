@@ -3,10 +3,10 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>AFSY - React par Armand Abric - Septembre 2015</title>
+		<title>MarseilleJS - React</title>
 
-		<!-- <meta name="description" content="A framework for easily creating beautiful presentations using HTML"> -->
-		<meta name="author" content="Armand ABRIC">
+		<meta name="description" content="Marseille JS - React XP par Armand Abric - Septembre 2015" />
+		<meta name="author" content="Armand ABRIC" />
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -14,10 +14,18 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+		<link rel="stylesheet" href="css/theme/blood.css" id="theme">
 
 		<!-- Code syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Reveal.js things -->
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<!-- React things -->
+		<script src="lib/js/react/react.js"></script>
+		<script src="lib/js/react/JSXTransformer.js"></script>
 
 		<!-- Printing and PDF exports -->
 		<script>
@@ -39,17 +47,259 @@
 
 				<section>
 					<h1>React</h1>
+					<!-- TODO: add a logo -->
+				</section>
+
+				<section class="about" data-background="./assets/anse-de-la-fausse-monnaie.jpg">
+					<br /><br /><br /><br /><br />
+					<br /><br /><br /><br /><br />
+
+					<h3>Armand Abric</h3>
+					<p>@spyseth</p>
+					<p>VeryLastRoom</p>
 				</section>
 
 				<section>
-					<h2>Armand ABRIC</h2>
-					<p>VeryLastRoom</p>
+					<h2>Qu'est-ce que React ?</h2>
+
+					<ul>
+						<li class="fragment">Une librairie</li>
+						<li class="fragment">Trois inovations :
+							<ul>
+								<li class="fragment">Un moteur de rendu</li>
+								<li class="fragment">Une remise en question de nos habitudes</li>
+								<li class="fragment">Une voie à sens unique</li>
+							</ul>
+						</li>
+						<li class="fragment">Mais pas que...</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>1. Une librairie</h2>
+
+					<ul>
+						<li class="fragment">Qui ne s'occupe que du rendu de la vue</li>
+	                	<li class="fragment">Qui ne remplace pas nos frameworks (Angular, Ember, Marionette.js)</li>
+					</ul>
+				</section>
+
+				<section>
+					<h1>2. Un moteur de rendu</h1>
+				</section>
+
+				<section>
+					<h2>Virtual DOM</h2>
+
+					<ul>
+						<li class="fragment">S'occupe des intéractions avec le DOM</li>
+						<li class="fragment">Isole le métier de la UI (votre code) du support qui l’affiche (le navigateur via le DOM)</li>
+						<li class="fragment">Optimise et harmonise la manipulation du DOM</li>
+						<li class="fragment">Une technique éprouvée pour rendu 3D lourd</li>
+					</ul>
+
+					<aside class="notes">
+					    <ul>
+							<li>On ne s’occupe pas de la mutation du DOM. Que de ça structure finale.</li>
+							<li>"Rerender. Don't mutate"</li>
+							<li>On ne met à jours le DOM que si le vDOM change</li>
+						</ul>
+					</aside>
+				</section>
+
+				<section>
+					<h1>3. Des composants</h1>
+				</section>
+
+				<section>
+					<h2>HTML <span class="fragment">+ JavaScript</span> <span class="fragment">= JSX</span></h2>
+
+					<pre class="fragment jsx"><code data-trim>
+var HelloWorld = React.createClass({
+    render: function () {
+        return (
+            <div>
+                Hello, world!
+            </div>
+        );
+    }
+});
+					</code></pre>
+
+					<div id="example-hello-world" class="fragment"></div>
+
+					<script type="text/jsx">
+                        var HelloWorld = React.createClass({
+                            render: function () {
+                                return (
+                                    <div>
+                                        Hello, world!
+                                    </div>
+                                );
+                            }
+                        });
+
+						React.render(
+							<HelloWorld />,
+							document.getElementById('example-hello-world')
+						);
+					</script>
+
+                    <aside class="notes">
+                        <ul>
+                            <li>- process de build</li>
+                        </ul>
+                    </aside>
+				</section>
+
+                <section>
+                    <p>Tous les exemples sont réellement générés par React. Regardez le code source la présentation.</p>
+                    <br /><br />
+                    <p><em>Protips : rechercher dans les balises script</em></p>
+                    <pre><code class="javascript">&lt;script type="text/jsx"&gt...&lt;/script&gt;</code></pre>
+                </section>
+
+				<section>
+					<h2><em>props</em>, <em>states</em> et <em>context</em> sont sur un bateau...</h2>
+                </section>
+
+                <section>
+					<h4>props</h4>
+
+                    <pre class="jsx"><code data-trim>
+var HelloWorld = React.createClass({ // &lt;HelloWorld name="José" /&gt;
+    propTypes: {
+        name: React.PropTypes.string
+    },
+    getDefaultProps: function () {
+        return {
+            name: 'world'
+        },
+    },
+    render: function () {
+        return (
+            <div>
+                Hello, {this.props.name}!
+            </div>
+        );
+    }
+});
+					</code></pre>
+                </section>
+
+                <section>
+					<h3>states</h3>
+	                <div class="fragment" id="example-i-love-click" class=""></div>
+
+                    <style>
+                        #example-i-love-click button {
+                            margin-top: 2em;
+                            font-size: 2em;
+                        }
+                    </style>
+
+					<script type="text/jsx">
+                        var LoveCounter = React.createClass({
+                            propTypes: {
+                                nbLove: React.PropTypes.integer
+                            },
+
+                            getDefaultProps: function () {
+                                return {
+									nbLove: 0
+								};
+                            },
+
+                            render: function () {
+								if (this.props.nbLove === 0) {
+									return (
+										<p>Nobody love me :-(</p>
+									)
+								}
+
+								var hearts = '';
+								for (var i = 0; i < this.props.nbLove; i++) {
+									hearts += '❤︎' // It's an heart
+								};
+
+                                return (
+                                    <h2>
+                                        Yeee, {hearts}!
+                                    </h2>
+                                );
+                            }
+                        });
+
+                        var ClickCatcher = React.createClass({
+                            getInitialState: function () {
+                               return {
+                                   nbClick: 0
+                               };
+                            },
+
+                            onNameChange: function () {
+                                this.setState({
+                                    nbClick: (this.state.nbClick + 1)
+                                });
+                            },
+
+							onReset: function() {
+								this.setState({
+                                    nbClick: 0
+                                });
+							},
+
+                            render: function () {
+                                return (
+                                    <div>
+                                        <LoveCounter nbLove={this.state.nbClick} />
+
+										<p><a onClick={this.onNameChange}>Envoyer de l&#39;amour </a></p>
+										<br />
+										<p className="fragment"><a onClick={this.onReset}>En fait non.</a></p>
+                                    </div>
+                                )
+                            }
+                        });
+
+						React.render(
+							(<ClickCatcher />),
+							document.getElementById('example-i-love-click')
+						);
+					</script>
+
+					<aside class="notes">
+						(exemple intératif avec enrichissement: introduction des props, propTypes, states, initial state, évoquer l'existance du context)
+
+						<ul>
+						  <li>Comunications unidirectionnelles</li>
+						  <li>Isolation</li>
+						  <li>Dépendences explicites</li>
+						  <li>Aucune mutation du DOM</li>
+					  </ul>
+					</aside>
+				</section>
+
+				<section>
+					<p>TODO: ouverture flux + serveur</p>
+
+					<img src="/assets/flux-simple-diagram.png" class="stretch" />
+				</section>
+
+				<section>
+					<h2>Dynamic exemple</h2>
+
+					<div id="dynamic-example"></div>
+
+				    <script type="text/jsx">
+				      	React.render(
+				        	<h1>Hello, world!</h1>,
+				        	document.getElementById('dynamic-example')
+				    	);
+				    </script>
 				</section>
 			</div>
 		</div>
-
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.js"></script>
 
 		<script>
 			Reveal.initialize({
@@ -58,6 +308,7 @@
 				history: true,
 				center: true,
 				transition: 'slide',
+				// backgroundTransition: 'slide',
 				dependencies: [
 					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
 					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },

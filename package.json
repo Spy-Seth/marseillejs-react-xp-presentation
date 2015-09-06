@@ -1,24 +1,29 @@
 {
-    "name": "afsy-react-presentation-september-2015",
-    "version": "1.0.0",
-    "description": "",
-    "main": "presentation/index.html",
-    "scripts": {
-        "deploy": "gulp deploy",
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/Spy-Seth/afsy-react-presentation-september-2015.git"
-    },
-    "author": "Armand ABRIC",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/Spy-Seth/afsy-react-presentation-september-2015/issues"
-    },
-    "homepage": "https://github.com/Spy-Seth/afsy-react-presentation-september-2015#readme",
-    "devDependencies": {
-        "gulp": "~3.9.0",
-        "gulp-gh-pages": "~0.5.2"
-    }
+  "name": "marseillejs-react-xp-presentation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "presentation/index.html",
+  "private": true,
+  "scripts": {
+    "deploy": "gulp deploy",
+    "dev": "gulp server",
+    "start": "npm run dev",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Spy-Seth/marseillejs-react-xp-presentation.git"
+  },
+  "author": "Armand ABRIC <armand@forgebinaire.net>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Spy-Seth/marseillejs-react-xp-presentation/issues"
+  },
+  "homepage": "https://github.com/Spy-Seth/marseillejs-react-xp-presentation#readme",
+  "devDependencies": {
+    "browser-sync": "~2.9.5",
+    "gulp": "~3.9.0",
+    "gulp-gh-pages": "~0.5.2",
+    "gulp-util": "~3.0.6"
+  }
 }
