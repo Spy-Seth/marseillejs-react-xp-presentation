@@ -3,10 +3,10 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>AFSY - React par Armand Abric - Septembre 2015</title>
+		<title>AFSY - React</title>
 
-		<meta name="description" content="">
-		<meta name="author" content="Armand ABRIC">
+		<meta name="description" content="AFSY - React par Armand Abric - Septembre 2015" />
+		<meta name="author" content="Armand ABRIC" />
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -14,7 +14,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/simple.css" id="theme">
+		<link rel="stylesheet" href="css/theme/night.css" id="theme">
 
 		<!-- Code syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -39,6 +39,12 @@
 		<!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
 		<![endif]-->
+
+		<style>
+			.about h2 {
+				/*margin-top: 60%;*/
+			}
+		</style>
 	</head>
 
 	<body>
@@ -47,67 +53,72 @@
 
 				<section>
 					<h1>React</h1>
-					<h2>Hype</h2>
+					<!-- TODO: add a logo -->
 				</section>
 
-				<section data-background="./assets/img/anse-de-la-fausse-monnaie.jpg">
-					<h2>Armand ABRIC</h2>
-					<p>VeryLastRoom</p>
+				<section class="about" data-background="./assets/anse-de-la-fausse-monnaie.jpg">
+					<br /><br /><br /><br /><br />
+					<br /><br /><br /><br /><br />
+					<br /><br />
+					<h3>Armand Abric</h3>
 					<p>@spyseth</p>
+					<p>VeryLastRoom</p>
 				</section>
 
 				<section>
 					<h2>Qu'est-ce que React ?</h2>
 
 					<ul>
-						<li>Une librairie</li>
-						<li>Trois inovations :
+						<li class="fragment">Une librairie</li>
+						<li class="fragment">Trois inovations :
 							<ul>
-								<li>Un moteur de rendu</li>
-								<li>Une remise en question de nos habitudes</li>
-								<li>Une voie à sens unique</li>
+								<li class="fragment">Un moteur de rendu</li>
+								<li class="fragment">Une remise en question de nos habitudes</li>
+								<li class="fragment">Une voie à sens unique</li>
 							</ul>
 						</li>
-						<li>Mais pas que...</li>
+						<li class="fragment">Mais pas que...</li>
 					</ul>
 				</section>
 
 				<section>
-					<h2>Une librairie</h2>
+					<h2>1. Une librairie</h2>
 
 					<ul>
-						<li>Qui ne s'occupe que du rendu de la vue</li>
-	                	<li>Qui ne remplace pas nos frameworks (Angular, Ember, Marionette.js)</li>
+						<li class="fragment">Qui ne s'occupe que du rendu de la vue</li>
+	                	<li class="fragment">Qui ne remplace pas nos frameworks (Angular, Ember, Marionette.js)</li>
 					</ul>
 				</section>
 
 				<section>
-					<h1>Un moteur de rendu</h1>
+					<h1>2. Un moteur de rendu</h1>
 				</section>
 
 				<section>
 					<h2>Virtual DOM</h2>
 
 					<ul>
-						<li>S'occupe des intéractions avec le DOM</li>
-						<li>Isole le métier de la UI (votre code) du support qui l’affiche (le navigateur via le DOM)</li>
-						<li>Optimise et harmonise la manipulation du DOM</li>
-						<li>Une technique éprouvée pour rendu 3D lourd</li>
+						<li class="fragment">S'occupe des intéractions avec le DOM</li>
+						<li class="fragment">Isole le métier de la UI (votre code) du support qui l’affiche (le navigateur via le DOM)</li>
+						<li class="fragment">Optimise et harmonise la manipulation du DOM</li>
+						<li class="fragment">Une technique éprouvée pour rendu 3D lourd</li>
 					</ul>
 
 					<aside class="notes">
-					    - On ne s’occupe pas de la mutation du DOM. Que de ça structure finale.
-						- On ne met à jours le DOM que si le vDOM change
+					    <ul>
+							<li>On ne s’occupe pas de la mutation du DOM. Que de ça structure finale.</li>
+							<li>"Rerender. Don't mutate"</li>
+							<li>On ne met à jours le DOM que si le vDOM change</li>
+						</ul>
 					</aside>
 				</section>
 
 				<section>
-					<h1>Des composants</h1>
+					<h1>3. Des composants</h1>
 				</section>
 
 				<section>
 					<h2>JavaScript + HTML <span class="fragment">= JSX</span></h2>
-					<p class="fragment">(JavaScript + HTML + CSS = JSX)</p>
 				</section>
 
 				<section>
@@ -116,15 +127,19 @@
 					<aside class="notes">
 						(exemple intératif avec enrichissement: introduction des props, propTypes, states, initial state, évoquer l'existance du context)
 
-						  - Comunications unidirectionnelles
-						  - Isolation
-						  - Dépendences explicites
-						  - Aucune mutation du DOM
+						<ul>
+						  <li>Comunications unidirectionnelles</li>
+						  <li>Isolation</li>
+						  <li>Dépendences explicites</li>
+						  <li>Aucune mutation du DOM</li>
+					  </ul>
 					</aside>
 				</section>
 
 				<section>
 					<p>TODO: ouverture flux + serveur</p>
+
+					<img src="/assets/flux-simple-diagram.png" class="stretch" />
 				</section>
 
 				<section>
