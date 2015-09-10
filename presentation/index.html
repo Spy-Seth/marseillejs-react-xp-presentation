@@ -118,11 +118,147 @@
 				</section>
 
 				<section>
-					<h2>JavaScript + HTML <span class="fragment">= JSX</span></h2>
+					<h2>HTML <span class="fragment">+ JavaScript</span> <span class="fragment">= JSX</span></h2>
+
+					<pre class="fragment jsx"><code data-trim>
+var HelloWorld = React.createClass({
+    render: function () {
+        return (
+            <div>
+                Hello, world!
+            </div>
+        );
+    }
+});
+					</code></pre>
+
+					<div id="example-hello-world" class="fragment"></div>
+
+					<script type="text/jsx">
+                        var HelloWorld = React.createClass({
+                            render: function () {
+                                return (
+                                    <div>
+                                        Hello, world!
+                                    </div>
+                                );
+                            }
+                        });
+
+						React.render(
+							<HelloWorld />,
+							document.getElementById('example-hello-world')
+						);
+					</script>
+
+                    <aside class="notes">
+                        <ul>
+                            <li>- process de build</li>
+                        </ul>
+                    </aside>
 				</section>
+
+                <section>
+                    <p>Tous les exemples sont réellement générés par React. Regardez le code source la présentation.</p>
+                    <br /><br />
+                    <p><em>Protips : rechercher dans les balises script</em></p>
+                    <pre><code class="javascript">&lt;script type="text/jsx"&gt...&lt;/script&gt;</code></pre>
+                </section>
 
 				<section>
 					<h2><em>props</em>, <em>states</em> et <em>context</em> sont sur un bateau...</h2>
+                </section>
+
+                <section>
+                    <pre class="jsx"><code data-trim>
+var HelloWorld = React.createClass({
+    propTypes: {
+        name: React.PropTypes.string
+    },
+
+    getDefaultProps: function () {
+        return {
+            name: 'world'
+        },
+    },
+
+    render: function () {
+        return (
+            <div>
+                Hello, {this.props.name}!
+            </div>
+        );
+    }
+});
+					</code></pre>
+
+                    <pre class="fragment jsx"><code data-trim>
+&lt;HelloWorld name="José" /&gt;
+					</code></pre>
+                </section>
+
+                <section>
+	                <div id="example-hello-world-props" class=""></div>
+
+                    <style>
+                        #example-hello-world-props input {
+                            margin-top: 2em;
+                            font-size: 2em;
+                        }
+                    </style>
+
+					<script type="text/jsx">
+                        var HelloWorld = React.createClass({
+                            propTypes: {
+                                name: React.PropTypes.string
+                            },
+
+                            getDefaultProps: function () {
+                                return {
+                                    name: 'world'
+                                };
+                            },
+
+                            render: function () {
+                                return (
+                                    <h2>
+                                        Hello, {this.props.name}!
+                                    </h2>
+                                );
+                            }
+                        });
+
+                        var SayHelloForm = React.createClass({
+                            getInitialState: function () {
+                               return {
+                                   currentName: 'world'
+                               };
+                            },
+
+                            onNameChange: function (e) {
+                                var name = e.target.value || 'Mr. Nobody';
+
+                                this.setState({
+                                    'currentName': name
+                                });
+                            },
+
+                            render: function () {
+                                return (
+                                    <div>
+                                        <HelloWorld name={this.state.currentName} />
+
+                                        <input type="text" defaultValue={this.state.currentName} onChange={this.onNameChange} className="fragment" />
+                                    </div>
+                                )
+                            }
+                        });
+
+						React.render(
+							(<SayHelloForm />),
+							document.getElementById('example-hello-world-props')
+						);
+					</script>
 
 					<aside class="notes">
 						(exemple intératif avec enrichissement: introduction des props, propTypes, states, initial state, évoquer l'existance du context)
