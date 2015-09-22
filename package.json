@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/Spy-Seth/afsy-react-presentation-september-2015#readme",
   "devDependencies": {
-    "browser-sync": "~2.9.1",
+    "browser-sync": "~2.9.5",
     "gulp": "~3.9.0",
     "gulp-gh-pages": "~0.5.2",
     "gulp-util": "~3.0.6"
