@@ -14,7 +14,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/night.css" id="theme">
+		<link rel="stylesheet" href="css/theme/blood.css" id="theme">
 
 		<!-- Code syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -170,18 +170,18 @@ var HelloWorld = React.createClass({
                 </section>
 
                 <section>
+					<h4>props</h4>
+
                     <pre class="jsx"><code data-trim>
-var HelloWorld = React.createClass({
+var HelloWorld = React.createClass({ // &lt;HelloWorld name="José" /&gt;
     propTypes: {
         name: React.PropTypes.string
     },
-
     getDefaultProps: function () {
         return {
             name: 'world'
         },
     },
-
     render: function () {
         return (
             <div>
@@ -191,72 +191,86 @@ var HelloWorld = React.createClass({
     }
 });
 					</code></pre>
-
-                    <pre class="fragment jsx"><code data-trim>
-&lt;HelloWorld name="José" /&gt;
-					</code></pre>
                 </section>
 
                 <section>
-	                <div id="example-hello-world-props" class=""></div>
+					<h3>states</h3>
+	                <div class="fragment" id="example-i-love-click" class=""></div>
 
                     <style>
-                        #example-hello-world-props input {
+                        #example-i-love-click button {
                             margin-top: 2em;
                             font-size: 2em;
                         }
                     </style>
 
 					<script type="text/jsx">
-                        var HelloWorld = React.createClass({
+                        var LoveCounter = React.createClass({
                             propTypes: {
-                                name: React.PropTypes.string
+                                nbLove: React.PropTypes.integer
                             },
 
                             getDefaultProps: function () {
                                 return {
-                                    name: 'world'
-                                };
+									nbLove: 0
+								};
                             },
 
                             render: function () {
+								if (this.props.nbLove === 0) {
+									return (
+										<p>Nobody love me :-(</p>
+									)
+								}
+
+								var hearts = '';
+								for (var i = 0; i < this.props.nbLove; i++) {
+									hearts += '❤︎' // It's an heart
+								};
+
                                 return (
                                     <h2>
-                                        Hello, {this.props.name}!
+                                        Yeee, {hearts}!
                                     </h2>
                                 );
                             }
                         });
 
-                        var SayHelloForm = React.createClass({
+                        var ClickCatcher = React.createClass({
                             getInitialState: function () {
                                return {
-                                   currentName: 'world'
+                                   nbClick: 0
                                };
                             },
 
-                            onNameChange: function (e) {
-                                var name = e.target.value || 'Mr. Nobody';
-
+                            onNameChange: function () {
                                 this.setState({
-                                    'currentName': name
+                                    nbClick: (this.state.nbClick + 1)
                                 });
                             },
+
+							onReset: function() {
+								this.setState({
+                                    nbClick: 0
+                                });
+							},
 
                             render: function () {
                                 return (
                                     <div>
-                                        <HelloWorld name={this.state.currentName} />
+                                        <LoveCounter nbLove={this.state.nbClick} />
 
-                                        <input type="text" defaultValue={this.state.currentName} onChange={this.onNameChange} className="fragment" />
+										<p><a onClick={this.onNameChange}>Envoyer de l&#39;amour </a></p>
+										<br />
+										<p className="fragment"><a onClick={this.onReset}>En fait non.</a></p>
                                     </div>
                                 )
                             }
                         });
 
 						React.render(
-							(<SayHelloForm />),
-							document.getElementById('example-hello-world-props')
+							(<ClickCatcher />),
+							document.getElementById('example-i-love-click')
 						);
 					</script>
 
