@@ -50,6 +50,12 @@
 					<!-- TODO: add a logo -->
 				</section>
 
+				<style>
+					.lower {
+						text-transform: lowercase;
+					}
+				</style>
+
 				<section class="about" data-background="./assets/anse-de-la-fausse-monnaie.jpg">
 					<br /><br /><br /><br /><br />
 					<br /><br /><br /><br /><br />
@@ -80,8 +86,8 @@
 					<h2>Un nouveau challenge : le site web</h2>
 
 					<ul>
-						<li class="fragment">Mauvaise expérience sur la stack traditionelle (serveur PHP + JS coté client)</li>
-						<li class="fragment">Fonctionne mais...
+						<li class="fragment">Mauvaises expériences sur la stack traditionelle (serveur PHP + JS coté client)</li>
+						<li class="fragment">Elle fonctionne mais...
 							<ul>
 								<li class="fragment">Duplique beaucoup de code métier entre le client et serveur</li>
 								<li class="fragment">Twig c'est bien, mais en fait non</li>
@@ -89,7 +95,7 @@
 								<li class="fragment">So old school</li>
 							</ul>
 						</li>
-						<li class="fragment">Forte habitude des « applications » : séparation parfaite entre le client et le serveur</li>
+						<li class="fragment">Forte habitude des « <em>applications</em> » : séparation parfaite entre le client et le serveur</li>
 						<li class="fragment">On aime les challenges</li>
 					</ul>
 				</section>
@@ -100,7 +106,7 @@
 					<ul>
 						<li class="fragment"><strong>Délais</strong> : 4 mois inextensibles (campagne marketing)</li>
 						<li class="fragment"><strong>Maturité</strong> : React est en beta</li>
-						<li class="fragment"><strong>Maitrise</strong> : Personne de chez nous n’avez mis en production du node</li>
+						<li class="fragment"><strong>Maitrise</strong> : Personne de chez nous n’avait mis en production du node</li>
 						<li class="fragment"><strong>Ressources</strong> : un développeur PHP/JS et un développeur iOS
 							<ul>
 								<li class="fragment">Equipe renforcée par un développeur PHP/JS</li>
@@ -112,6 +118,7 @@
 				<section>
 					<h2>POC POC POC ?</h2>
 
+					<p>Ce que nous voulions valider :</p>
 					<ul>
 						<li>React</li>
 						<li>Flux</li>
@@ -120,17 +127,137 @@
 					</ul>
 				</section>
 
+				<style>
+					.onfire-container {
+						color: white;
+						font-weight: 900;
+						text-shadow: 0 0 20px black
+					}
+				</style>
+				<section data-background="./assets/mad-scientist-laugh.gif">
+					<br /><br /><br /><br />
+					<br /><br /><br /><br />
+					<br /><br /><br /><br />
+
+					<p class="onfire-container">&laquo; <em class="onfire">Ca marche !</em> &raquo;</p>
+				</section>
+
+				<style>
+					.note {
+						font-size: 0.6em !important;
+						font-style: italic !important;
+					}
+				</style>
+
 				<section>
-					<img src="./assets/mad-scientist-laugh.gif" />
+					<h1>Ca marche !</h1>
+
+					<p>Les POC sont satisfaisants.</p>
+					<p>On démare le projet en utilisant React.</p>
 				</section>
 
 				<section>
-					<h2>Enseignements tirés des POC</h2>
+					<h2>Quelques mois plus tard...</h2>
+				</section>
 
-					<p><span style="color: pink;">❤︎ ❤︎ ❤︎ React / JSX ❤︎ ❤︎ ❤︎</span></p>
+				<section>
+					<h2>Enseignements tirés</h2>
+
+					<p class="fragment"><span style="color: pink;">❤︎ ❤︎ ❤︎ React ❤︎ ❤︎ ❤︎</span></p>
 					<ul>
-						<li><span style="color: pink;">❤︎ ❤︎ ❤︎ React / JSX ❤︎ ❤︎ ❤︎</span></li>
-						<li>React seul est simple !</li>
+						<li class="fragment"><strong>React</strong> seul est extrêment simple</li>
+						<li class="fragment">Le <strong>JSX</strong> est un vrai bonheur à utiliser</li>
+						<li class="fragment"><strong>Flux</strong> est un pattern théorique inutilisable en l'état</li>
+						<li class="fragment">Parvenir à l'<strong>isomorphisme</strong> est <strong>très</strong> contraignant</li>
+						<li class="fragment">Stack complexe à mettre en œuvre : système de build à créer de zéro</li>
+					</ul>
+
+					<p class="note fragment">
+						NB : Depuis nos débuts avec cette stack beaucoup de progrès ont été fait.
+						Il est maintenant beaucoup plus facile d'initialiser un projet React/Flux isomorphique.
+					</p>
+				</section>
+
+				<section>
+					<h1>Approfondissement</h1>
+				</section>
+
+				<section>
+					<h2>&laquo; <em>React seul est extrêment simple</em> &raquo; 1/2</h2>
+
+					<p>React est un simple appel à une fonction avec des paramètres</p>
+
+					<pre class="fragment jsx"><code data-trim>
+React.render(
+	&lt;SayHello to="Jean-Michel" /&gt;,
+	document.getElementById('example-hello-world')
+);
+					</code></pre>
+
+					<pre class="fragment js"><code data-trim>
+React.render(
+	React.createElement(sayHello, {to: "Jean-Michel"},
+	document.getElementById('say-hello-container')
+);
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>&laquo; <em>React seul est extrêment simple</em> &raquo; 2/2</h2>
+
+					<ul>
+						<li class="fragment">Isolation parfaite des composants entre eux</li>
+						<li class="fragment">Le JSX exprime l'état final du DOM
+							<ul>
+								<li class="fragment">on se concentre sur le HTML que l'on veut générer...</li>
+								<li class="fragment">... et non sur la mutabilité du DOM</li>
+							</ul>
+						</li>
+						<li class="fragment">Rend explicite le métier de la GUI</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>Exemple</h3>
+					<pre class="jsx"><code data-trim>
+var DealListPage = React.createClass({
+    /* ... */
+    render: function () {
+        var city = this.state.city;
+        var now = Date.now();
+
+        return (
+            &lt;div className="deal-list-page-component"&gt;
+                {city.isSellOpen(now) ?
+                    &lt;OpenSellCity city={city} /*...*/ /&gt;
+                    :
+                    &lt;ClosedSellCity city={city} /&gt;
+                }
+            &lt;/div&gt;
+        );
+    }
+});
+					</code></pre>
+				</section>
+
+				<section>
+					<h3>&laquo; <em>Parvenir à l'<strong>isomorphisme</strong> est <strong>très</strong> contraignant</em> &raquo;</h3>
+
+					<ul>
+						<li>Il faut être capable de démarer l'application coté client à partir de l'état dans lequel on l'a laisser coté serveur</li>
+						<li></li>
+					</ul>
+				</section>
+
+
+				<section>
+					<h2>Outillages</h2>
+
+					<ul>
+						<li class="fragment">React</li>
+						<li class="fragment">Flux<span class="fragment">ible par Yahoo</span></li>
+						<li class="fragment">Express</li>
+						<li class="fragment">React router</li>
 					</ul>
 				</section>
 			</div>
