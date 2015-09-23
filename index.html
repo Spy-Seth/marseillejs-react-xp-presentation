@@ -46,7 +46,7 @@
 			<div class="slides">
 
 				<section>
-					<h1>React</h1>
+					<h2>React, retour d'expériences</h2>
 					<!-- TODO: add a logo -->
 				</section>
 
@@ -128,18 +128,19 @@
 				</section>
 
 				<style>
-					.onfire-container {
+					.quote-on-image {
 						color: white;
 						font-weight: 900;
 						text-shadow: 0 0 20px black
 					}
 				</style>
+
 				<section data-background="./assets/mad-scientist-laugh.gif">
 					<br /><br /><br /><br />
 					<br /><br /><br /><br />
 					<br /><br /><br /><br />
 
-					<p class="onfire-container">&laquo; <em class="onfire">Ca marche !</em> &raquo;</p>
+					<p class="quote-on-image">&laquo; <em>Ca marche !</em> &raquo;</p>
 				</section>
 
 				<style>
@@ -161,6 +162,10 @@
 				</section>
 
 				<section>
+					<a href="https://verylastroom.com" target="_blank"><img src="./assets/screenshot-vlr-1.png" /></a>
+				</section>
+
+				<section>
 					<h2>Enseignements tirés</h2>
 
 					<p class="fragment"><span style="color: pink;">❤︎ ❤︎ ❤︎ React ❤︎ ❤︎ ❤︎</span></p>
@@ -173,7 +178,7 @@
 					</ul>
 
 					<p class="note fragment">
-						NB : Depuis nos débuts avec cette stack beaucoup de progrès ont été fait.
+						NB : Depuis nos débuts avec cette stack beaucoup de progrès ont été réalisés.
 						Il est maintenant beaucoup plus facile d'initialiser un projet React/Flux isomorphique.
 					</p>
 				</section>
@@ -244,21 +249,48 @@ var DealListPage = React.createClass({
 					<h3>&laquo; <em>Parvenir à l'<strong>isomorphisme</strong> est <strong>très</strong> contraignant</em> &raquo;</h3>
 
 					<ul>
-						<li>Il faut être capable de démarer l'application coté client à partir de l'état dans lequel on l'a laisser coté serveur</li>
-						<li></li>
+						<li>Il faut être capable de démarer l'application coté client à partir de l'état dans lequel on l'a laissé coté serveur</li>
+						<li>Transfert des données entre le client et le serveur</li>
+						<li>Partage des composants</li>
+						<li>Différences importantes entre les deux environements</li>
 					</ul>
 				</section>
 
 
 				<section>
-					<h2>Outillages</h2>
+					<h2>Outillages de base</h2>
 
 					<ul>
-						<li class="fragment">React</li>
-						<li class="fragment">Flux<span class="fragment">ible par Yahoo</span></li>
-						<li class="fragment">Express</li>
-						<li class="fragment">React router</li>
+						<li class="fragment"><code>react</code></li>
+						<li class="fragment"><code>flux</code><span class="fragment"><code>ible</code> par Yahoo</span></li>
+						<li class="fragment"><code>express</code> : serveur http</li>
+						<li class="fragment"><code>react-router</code> : routeur</li>
+						<li class="fragment"><code>intl</code> + <code>react-intl</code> : i18n</li>
+						<li class="fragment"><code>browserify</code> : processus de build</li>
 					</ul>
+
+					<br /><br />
+
+					<p class="fragment">Attention troll : mais pas de <code>jQuery</code></p>
+				</section>
+
+				<section>
+					<h2>Conclusions</h2>
+
+					<ul>
+						<li>Faire le GUI avec React c'est agréable</li>
+						<li>React + Flux + Isomophisme = complexité</li>
+						<li>Une stack favorisant le <abbr title="Domain Driven Design">DDD</abbr>
+							et <abbr title="Command Query Responsibility Segregation">CQRS</abbr>
+						</li>
+					</ul>
+				</section>
+
+				<section data-background="./assets/beers.jpg">
+					<br /><br /><br /><br /><br />
+					<br /><br /><br /><br /><br />
+					<p class="quote-on-image">A vos questions/bières !</p>
+					<p class="quote-on-image">Et merci pour votre attention.</p>
 				</section>
 			</div>
 		</div>
