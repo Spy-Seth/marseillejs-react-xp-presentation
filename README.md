@@ -6,6 +6,9 @@ This presentation was made for [MarseilleJS](http://francejs.org/MarseilleJS/) m
 
 > https://spy-seth.github.io/marseillejs-react-xp-presentation/
 
+## Get the PDF version
+
+> [https://spy-seth.github.io/marseillejs-react-xp-presentation/MarseilleJS - React.pdf](https://spy-seth.github.io/marseillejs-react-xp-presentation/MarseilleJS - React.pdf)
 
 ## Locally run the presentation
 
